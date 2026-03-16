@@ -4,6 +4,6 @@ project(Tag_Game_CS)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(Tag_Game_CS SourceFiles/main.cpp
-        "Header FIles/GameController.h"
         "Header FIles/GameField.h"
-        SourceFiles/game.cpp)
+        SourceFiles/game.cpp
+        SourceFiles/GameField.cpp)
