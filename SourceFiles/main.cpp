@@ -9,7 +9,7 @@ int main() {
     int size;
 
 
-
+    // =========================ІНІЦІАЛІЗАЦІЯ ПОЛЯ======================
     while (true) {
         constexpr int MIN_SIZE = MIN_FIELD_SIZE;
         constexpr int MAX_SIZE = MAX_FIELD_SIZE;
@@ -28,11 +28,34 @@ int main() {
             continue;
         }
 
+
         break;
     }
 
     game.init(size);
-    game.print();
+
+    // ======================ХОДИ====================================
+    while (true) {
+        game.print();
+
+        std::cout << "\nUse WASD (q to exit): ";
+        std::string input;
+        std::cin >> input;
+
+        char move = input[0];
+
+        if (move == 'q') break;
+
+        if (!game.moveEmpty(move)) {
+            std::cout << "Invalid move!\n";
+        }
+
+        if (game.isWin()) {
+            game.print();
+            std::cout << "YOU WIN!\n";
+            break;
+        }
+    }
 
     return 0;
 }
