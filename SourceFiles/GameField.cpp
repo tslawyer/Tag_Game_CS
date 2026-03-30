@@ -87,20 +87,21 @@ bool GameField::moveTile(int value) {
 
 // =================Перевірка виграшу ============
 bool GameField::isWin() const {
+    if (field[size - 1][size - 1] != 0)
+        return false;
+
     int expected = 1;
 
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
 
-            if (i == size - 1 && j == size - 1) {
-                if (field[i][j] != 0)
-                    return false;
-            } else {
-                if (field[i][j] != expected)
-                    return false;
-                expected++;
-            }
+            if (i == size - 1 && j == size - 1)
+                return true;
 
+            if (field[i][j] != expected)
+                return false;
+
+            expected++;
         }
     }
 
