@@ -31,19 +31,6 @@ void GameField::init(int d) {
     }
 }
 
-// void GameField::print() const {
-//     for (int i = 0; i < size; i++) {
-//         for (int j = 0; j < size; j++) {
-//
-//             if (field[i][j] == 0)
-//                 std::cout << "_ ";
-//             else
-//                 std::cout << field[i][j] << " ";
-//
-//         }
-//         std::cout << std::endl;
-//     }
-// }
 
 // ========Перевірка можливості руху===============
 bool GameField::canMove(int row, int col) const {
@@ -58,32 +45,6 @@ bool GameField::canMove(int row, int col) const {
 }
 
 
-// bool GameField::moveTile(int value) {
-//     int tileRow = -1, tileCol = -1;
-//
-//     for (int i = 0; i < size; i++) {
-//         for (int j = 0; j < size; j++) {
-//             if (field[i][j] == value) {
-//                 tileRow = i;
-//                 tileCol = j;
-//                 break;
-//             }
-//         }
-//     }
-//
-//     if (tileRow == -1) return false;
-//
-//     if (!canMove(tileRow, tileCol))
-//         return false;
-//
-//     field[emptyRow][emptyCol] = field[tileRow][tileCol];
-//     field[tileRow][tileCol] = 0;
-//
-//     emptyRow = tileRow;
-//     emptyCol = tileCol;
-//
-//     return true;
-// }
 
 
 // =================Перевірка виграшу ============
@@ -134,32 +95,18 @@ bool GameField::moveEmpty(char direction) {
     return true;
 }
 
-void GameField::operator&&(int value) {
-    int tileRow = -1, tileCol = -1;
 
-    for (int i = 0; i < size; i++) {
-        for (int j = 0; j < size; j++) {
-            if (field[i][j] == value) {
-                tileRow = i;
-                tileCol = j;
-                break;
-            }
+
+std::ostream& operator<<(std::ostream& out, const GameField& gf) {
+    for (int i = 0; i < gf.size; i++) {
+        for (int j = 0; j < gf.size; j++) {
+
+            if (gf.field[i][j] == 0)
+                out << "_ ";
+            else
+                out << gf.field[i][j] << " ";
         }
+        out << '\n';
     }
-
-    if (tileRow == -1) {
-        std::cout << "Invalid move!\n";
-        return;
-    }
-
-    if (!canMove(tileRow, tileCol)) {
-        std::cout << "Invalid move!\n";
-        return;
-    }
-
-    field[emptyRow][emptyCol] = field[tileRow][tileCol];
-    field[tileRow][tileCol] = 0;
-
-    emptyRow = tileRow;
-    emptyCol = tileCol;
+    return out;
 }

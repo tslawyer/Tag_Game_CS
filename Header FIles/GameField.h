@@ -24,7 +24,6 @@ struct GameField {
     bool canMove(int row, int col) const;
     bool isWin() const;
     bool moveEmpty(char direction);
-    void operator&&(int value);
 
 };
 
