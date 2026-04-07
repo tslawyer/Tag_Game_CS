@@ -1,6 +1,8 @@
 #pragma once
+#include <iostream>
 
 struct GameField {
+    //GameField.h
 
     // ==== Стан гри=====
     enum GameState {
@@ -17,12 +19,13 @@ struct GameField {
     GameState state;
 
     void init(int d);
-    void print() const;
 
     //===== Сигнатури для перевірки виграшу і ходу =====
     bool canMove(int row, int col) const;
-    bool moveTile(int value);
     bool isWin() const;
     bool moveEmpty(char direction);
+    void operator&&(int value);
 
 };
+
+std::ostream& operator<<(std::ostream& out, const GameField& gf);
