@@ -3,7 +3,7 @@
 #include "../Header FIles/GameController.h"
 
 
-
+//main.cpp
 int main() {
     GameField game;
     int size;
@@ -36,7 +36,7 @@ int main() {
 
     // ======================ХОДИ====================================
     while (true) {
-        game.print();
+        std::cout << game;
 
         std::cout << "\nUse WASD (q to exit): ";
         std::string input;
@@ -51,7 +51,7 @@ int main() {
         }
 
         if (game.isWin()) {
-            game.print();
+            std::cout <<game;
             std::cout << "YOU WIN!\n";
             break;
         }
