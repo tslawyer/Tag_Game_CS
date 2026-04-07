@@ -23,8 +23,10 @@ struct GameField {
     //===== Сигнатури для перевірки виграшу і ходу =====
     bool canMove(int row, int col) const;
     bool isWin() const;
-    bool moveEmpty(char direction);
+
+    // ====== Сигнатура для перевантаження оператору "&&" який приймає direction "w-a-s-d" =====
+    void operator&&(char direction);
 
 };
-
+// ========Сигнатура перевантаження "<<" для виведення поля======
 std::ostream& operator<<(std::ostream& out, const GameField& gf);

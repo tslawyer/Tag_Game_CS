@@ -46,9 +46,7 @@ int main() {
 
         if (move == 'q') break;
 
-        if (!game.moveEmpty(move)) {
-            std::cout << "Invalid move!\n";
-        }
+        game && move;
 
         if (game.isWin()) {
             std::cout <<game;

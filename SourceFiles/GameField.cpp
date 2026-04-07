@@ -70,8 +70,9 @@ bool GameField::isWin() const {
     return true;
 }
 
-// ============== Реалізація методу який дозволяє керувати елементом _ ==========
-bool GameField::moveEmpty(char direction) {
+// ============== Реалізація перевантаження оператору "&&" який дозволяє керувати елементом _ ==========
+
+void GameField::operator&&(char direction) {
     int newRow = emptyRow;
     int newCol = emptyCol;
 
@@ -80,19 +81,20 @@ bool GameField::moveEmpty(char direction) {
         case 's': newRow++; break;
         case 'a': newCol--; break;
         case 'd': newCol++; break;
-        default: return false;
+        default:
+            std::cout << "Invalid move!\n";
+            return;
     }
 
-    if (newRow < 0 || newRow >= size || newCol < 0 || newCol >= size)
-        return false;
+    if (newRow < 0 || newRow >= size || newCol < 0 || newCol >= size) {
+        std::cout << "Invalid move!\n";
+        return;
+    }
 
     field[emptyRow][emptyCol] = field[newRow][newCol];
     field[newRow][newCol] = 0;
-
     emptyRow = newRow;
     emptyCol = newCol;
-
-    return true;
 }
 
 
