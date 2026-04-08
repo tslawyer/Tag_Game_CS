@@ -6,4 +6,5 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(Tag_Game_CS SourceFiles/main.cpp
         "Header FIles/GameField.h"
         SourceFiles/GameField.cpp
-        "Header FIles/GameController.h")
+        "Header FIles/GameController.h"
+        SourceFiles/GameController.cpp)

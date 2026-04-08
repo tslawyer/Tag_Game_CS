@@ -1,5 +1,6 @@
 #include "../Header FIles//GameField.h"
 #include <iostream>
+#include <iomanip>
 
 // GameField.cpp
 void GameField::init(int d) {
@@ -31,23 +32,18 @@ void GameField::init(int d) {
     }
 }
 
-
-// ========Перевірка можливості руху===============
 bool GameField::canMove(int row, int col) const {
     if (row < 0 || row >= size || col < 0 || col >= size)
         return false;
+
     if ((row == emptyRow && abs(col - emptyCol) == 1) ||
         (col == emptyCol && abs(row - emptyRow) == 1)) {
         return true;
-        }
+    }
 
     return false;
 }
 
-
-
-
-// =================Перевірка виграшу ============
 bool GameField::isWin() const {
     if (field[size - 1][size - 1] != 0)
         return false;
@@ -69,8 +65,6 @@ bool GameField::isWin() const {
 
     return true;
 }
-
-// ============== Реалізація перевантаження оператору "&&" який дозволяє керувати елементом _ ==========
 
 void GameField::operator&&(char direction) {
     int newRow = emptyRow;
@@ -97,16 +91,14 @@ void GameField::operator&&(char direction) {
     emptyCol = newCol;
 }
 
-
-
 std::ostream& operator<<(std::ostream& out, const GameField& gf) {
     for (int i = 0; i < gf.size; i++) {
         for (int j = 0; j < gf.size; j++) {
 
             if (gf.field[i][j] == 0)
-                out << "_ ";
+                out << std::setw(4) << "_";
             else
-                out << gf.field[i][j] << " ";
+                out << std::setw(4) << gf.field[i][j];
         }
         out << '\n';
     }
