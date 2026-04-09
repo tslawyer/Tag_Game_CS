@@ -44,7 +44,7 @@ void GameController::gameLoop() {
 
         std::cout << "\nUse WASD (space to exit): ";
 
-        std::cin.ignore(1000, '\n'); // очищаем буфер
+        std::cin.ignore(1000, '\n');
         char input;
         std::cin >> std::noskipws >> input;
 
