@@ -19,12 +19,12 @@ void GameController::startGame() {
             break;
         }
         catch (const char* msg) {
-            std::cout << "Error: " << msg << "\n";
+            std::cout << "Exception: " << msg << "\n";
             std::cin.clear();
             std::cin.ignore(1000, '\n');
         }
         catch (const std::exception& e) {
-            std::cout << "Error: " << e.what() << "\n";
+            std::cout << "Exception: " << e.what() << "\n";
         }
     }
 
