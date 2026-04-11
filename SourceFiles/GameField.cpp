@@ -1,6 +1,8 @@
 #include "../Header FIles//GameField.h"
 #include <iostream>
 #include <iomanip>
+#include <stdexcept>
+#include <cmath>
 
 // GameField.cpp
 void GameField::init(int d) {
@@ -76,13 +78,12 @@ void GameField::operator&&(char direction) {
         case 'a': newCol--; break;
         case 'd': newCol++; break;
         default:
-            std::cout << "Invalid move!\n";
-            return;
+            throw "Invalid move!";
+
     }
 
     if (newRow < 0 || newRow >= size || newCol < 0 || newCol >= size) {
-        std::cout << "Invalid move!\n";
-        return;
+        throw std::runtime_error("Went out of boundaries");
     }
 
     field[emptyRow][emptyCol] = field[newRow][newCol];
